@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+import "./App.css";
+import HomePage from "./Components/HomePage/HomePage";
+import ShowQuiz from "./Components/ShowQuiz/ShowQuiz";
+import Timer from "./Components/Timer/Timer";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
+  const [isFinished, setIsFinished] = useState(false);
+  const [categoryId, setCategoryId] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      {/* <HomePage setCategoryId={setCategoryId} /> */}
+
+      <Switch>
+        <Route exact path="/">
+          <HomePage setCategoryId={setCategoryId} categoryId={categoryId} />
+        </Route>
+        <Route path="/quiz">
+          <Timer setIsFinished={setIsFinished} minutes={1} />
+          <ShowQuiz
+            isFinished={isFinished}
+            setIsFinished={setIsFinished}
+            categoryId={categoryId}
+          />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
