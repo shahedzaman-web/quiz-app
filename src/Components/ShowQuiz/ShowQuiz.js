@@ -12,7 +12,7 @@ const ShowQuiz = ({ over, setOver, categoryId, isFinished, setIsFinished }) => {
       .then((res) => res.json())
       .then((data) => setQuizList(data.results));
   }, [categoryId]);
-  console.log(over);
+
   const handleClicked = () => {
     setIsFinished(true);
     setOver(true);

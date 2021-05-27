@@ -6,8 +6,7 @@ const QuizList = (props) => {
   const [isDisabled, setIsDisabled] = useState(false);
   const { score, setScore, isFinished } = props;
   const allOption = [correct_answer, ...incorrect_answers];
-  console.log(allOption);
-  console.log(props.quiz);
+
   // const randomOptionFunction = () => {
   //   const randomItem = allOption[Math.floor(Math.random() * allOption.length)];
 
@@ -15,12 +14,13 @@ const QuizList = (props) => {
   //   if (index !== -1) {
   //     const randomOption = allOption.splice(index, 1);
   //     return (
-  //       <option class="list-group-item" value={randomOption[0]}>
+  //       <option className="list-group-item" value={randomOption[0]}>
   //         {randomOption[0]}
   //       </option>
   //     );
   //   }
   // };
+  // eslint-disable-next-line
   const randomOptionFunction = (allOption) => {
     var currentIndex = allOption.length,
       temporaryValue,
@@ -43,7 +43,6 @@ const QuizList = (props) => {
 
   // Used like so
 
-  console.log(allOption);
   // console.log(randomOptionFunction());
   // console.log(randomOptionFunction());
   // console.log(randomOptionFunction());
@@ -83,27 +82,27 @@ const QuizList = (props) => {
 
   return (
     <div className="my-5">
-      <ul class="list-group">
-        <li class="list-group-item active " aria-current="true">
+      <ul className="list-group">
+        <li className="list-group-item active " aria-current="true">
           {question}
         </li>
         <div>
           <select
             onChange={handleSelect}
-            class="form-select"
+            className="form-select"
             multiple
             disabled={isDisabled && isDisabled ? "disabled" : ""}
           >
-            <option class="list-group-item" value={allOption[0]}>
+            <option className="list-group-item" value={allOption[0]}>
               {allOption[0]}
             </option>
-            <option class="list-group-item" value={allOption[1]}>
+            <option className="list-group-item" value={allOption[1]}>
               {allOption[1]}
             </option>
-            <option class="list-group-item" value={allOption[2]}>
+            <option className="list-group-item" value={allOption[2]}>
               {allOption[2]}
             </option>
-            <option class="list-group-item" value={allOption[3]}>
+            <option className="list-group-item" value={allOption[3]}>
               {allOption[3]}
             </option>
           </select>
@@ -112,11 +111,11 @@ const QuizList = (props) => {
       {isFinished && (
         <div>
           {isCorrect ? (
-            <div class="alert alert-success" role="alert">
+            <div className="alert alert-success" role="alert">
               Your Answer Is Correct!
             </div>
           ) : (
-            <div class="alert alert-danger" role="alert">
+            <div className="alert alert-danger" role="alert">
               Your Answer is wrong. Correct Answer is : {correct_answer}
             </div>
           )}

@@ -25,35 +25,35 @@ const HomePage = ({ setCategoryId, categoryId }) => {
   };
   return (
     <div className="position-absolute top-50 start-50 translate-middle ">
-      <ul class="list-group">
-        <li class="list-group-item bg-success text-white">
+      <ul className="list-group">
+        <li className="list-group-item bg-success text-white">
           Some Rules of this Quiz
         </li>
-        <li class="list-group-item">
+        <li className="list-group-item">
           1. You will have only <b>30 seconds</b> per each question.
         </li>
-        <li class="list-group-item">
+        <li className="list-group-item">
           {" "}
           2. Once you select your answer, it can't be undone.
         </li>
-        <li class="list-group-item">
+        <li className="list-group-item">
           {" "}
           3. You can't select any option once time goes off.
         </li>
-        <li class="list-group-item">
+        <li className="list-group-item">
           {" "}
           4. You can't exit from the Quiz while you're playing.
         </li>
-        <li class="list-group-item">
+        <li className="list-group-item">
           {" "}
           5. You'll get points on the basis of your correct answers.
         </li>
       </ul>
 
-      <div class="dropdown d-flex m-3">
+      <div className="dropdown d-flex m-3">
         <p className="mt-2">Select your Category</p>
         <button
-          class="btn btn-secondary dropdown-toggle mx-3"
+          className="btn btn-secondary dropdown-toggle mx-3"
           type="button"
           id="dropdownMenuButton1"
           data-bs-toggle="dropdown"
@@ -61,10 +61,10 @@ const HomePage = ({ setCategoryId, categoryId }) => {
         >
           Category
         </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <select onChange={handleSelect} class="form-select" multiple>
+        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <select onChange={handleSelect} className="form-select" multiple>
             {category.map((list) => (
-              <option class="list-group-item" value={list.id}>
+              <option className="list-group-item" value={list.id}>
                 {list.name}
               </option>
             ))}
