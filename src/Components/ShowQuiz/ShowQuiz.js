@@ -26,7 +26,6 @@ const ShowQuiz = ({ over, setOver, categoryId, isFinished, setIsFinished }) => {
       <h2 className={isFinished ? "d-blocked" : "d-none"}>
         Your Score :{score}/{quizList.length}
       </h2>
-      <p>over {over}</p>
 
       {quizList.map((quiz) => (
         <QuizList

@@ -17,7 +17,7 @@ function App() {
           <HomePage setCategoryId={setCategoryId} categoryId={categoryId} />
         </Route>
         <Route path="/quiz">
-          <Timer setIsFinished={setIsFinished} minutes={1} />
+          <Timer setIsFinished={setIsFinished} minutes={5} />
           <ShowQuiz
             isFinished={isFinished}
             setIsFinished={setIsFinished}
