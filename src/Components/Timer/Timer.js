@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 
-const Timer = ({ hours = 0, minutes = 0, seconds = 0, setIsFinished }) => {
-  const [over, setOver] = useState(false);
+const Timer = ({
+  hours = 0,
+  minutes = 0,
+  seconds = 0,
+  setIsFinished,
+  over,
+  setOver,
+}) => {
   const [[h, m, s], setTime] = useState([hours, minutes, seconds]);
 
   const tick = () => {
@@ -24,11 +30,11 @@ const Timer = ({ hours = 0, minutes = 0, seconds = 0, setIsFinished }) => {
   });
 
   return (
-    <div className="text-center">
+    <div className="text-center pt-3">
       <h1>{`${h.toString().padStart(2, "0")}:${m
         .toString()
         .padStart(2, "0")}:${s.toString().padStart(2, "0")}`}</h1>
-      <div>{over ? "Time's up!" : ""}</div>
+      <p className="text-danger">{over ? "Time's up!" : ""}</p>
     </div>
   );
 };

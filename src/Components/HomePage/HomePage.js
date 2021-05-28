@@ -5,16 +5,24 @@ import { useHistory } from "react-router";
 const HomePage = ({ setCategoryId, categoryId }) => {
   const [category, setCategory] = useState([]);
   let history = useHistory();
+
   useEffect(() => {
+    let isActive = true;
     fetch("https://opentdb.com/api_category.php")
       .then((res) => res.json())
-      .then((data) => setCategory(data.trivia_categories));
+      .then((data) => {
+        if (isActive) {
+          setCategory(data.trivia_categories);
+        }
+      })
+      .catch((error) => console.log(error.message));
+    return () => {
+      isActive = false;
+    };
   });
-
   const handleSelect = (id) => {
     const optionId = id.target.value;
     setCategoryId(optionId);
-    console.log(optionId);
   };
   const handleClick = () => {
     if (categoryId === 0) {
@@ -24,7 +32,7 @@ const HomePage = ({ setCategoryId, categoryId }) => {
     }
   };
   return (
-    <div className="position-absolute top-50 start-50 translate-middle ">
+    <div className="position-absolute top-50 start-50 translate-middle">
       <ul className="list-group">
         <li className="list-group-item bg-success text-white">
           Some Rules of this Quiz
@@ -64,7 +72,7 @@ const HomePage = ({ setCategoryId, categoryId }) => {
         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <select onChange={handleSelect} className="form-select" multiple>
             {category.map((list) => (
-              <option className="list-group-item" value={list.id}>
+              <option className="list-group-item" key={list.id} value={list.id}>
                 {list.name}
               </option>
             ))}
