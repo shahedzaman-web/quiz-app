@@ -60,24 +60,14 @@ const HomePage = ({ setCategoryId, categoryId }) => {
 
       <div className="dropdown d-flex m-3">
         <p className="mt-2">Select your Category</p>
-        <button
-          className="btn btn-secondary dropdown-toggle mx-3"
-          type="button"
-          id="dropdownMenuButton1"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Category
-        </button>
-        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <select onChange={handleSelect} className="form-select" multiple>
-            {category.map((list) => (
-              <option className="list-group-item" key={list.id} value={list.id}>
-                {list.name}
-              </option>
-            ))}
-          </select>
-        </ul>
+
+        <select onChange={handleSelect} className="form-select dropdown-toggle">
+          {category.map((list) => (
+            <option className="list-group-item" key={list.id} value={list.id}>
+              {list.name}
+            </option>
+          ))}
+        </select>
       </div>
       <div className="text-center">
         <button onClick={() => handleClick()} className="btn btn-success my-5">
